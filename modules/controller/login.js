@@ -15,21 +15,36 @@ exports.loginUser = (req, res) => {
             return res.status(401).json({
               code: 401,
               status: "failed",
-               message: ''
+               message: 'Unauthorized Access'
             });
          }
+
          if(result) {
-            return res.status(200).json({
-              code:200,
-              status:"success",
-               "message": 'Welcome to the JWT Auth'
-            });
+          const JWTToken = jwt.sign({
+               email: user.email,
+               _id: user._id
+             },
+             'secret',
+              {
+                expiresIn: '24h'
+              });
+              return res.status(200).json({
+                success: 'Welcome to the JWT Auth',
+                token: JWTToken
+              });
          }
-         return res.status(401).json({
-           code: 401,
-           status: "failed",
-            message: 'Incorrect Password!!'
-         });
+        //  if(result) {
+        //     return res.status(200).json({
+        //       code:200,
+        //       status:"success",
+        //        "message": 'Welcome to the JWT Auth'
+        //     });
+        //  }
+        //  return res.status(401).json({
+        //    code: 401,
+        //    status: "failed",
+        //     message: 'Incorrect Password!!'
+        //  });
       });
    })
    .catch(error => {

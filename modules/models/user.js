@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 //Defining the Schema
 let userSchema = new Schema({
+  _id: mongoose.Schema.Types.ObjectId,
   firstName: { type: String },
   lastName: String,
   email: { type: String },
