@@ -15,7 +15,7 @@ exports.loginUser = (req, res) => {
             return res.status(401).json({
               code: 401,
               status: "failed",
-               message: 'Unauthorized Access'
+               message: ''
             });
          }
          if(result) {
@@ -28,7 +28,7 @@ exports.loginUser = (req, res) => {
          return res.status(401).json({
            code: 401,
            status: "failed",
-            message: 'Unauthorized Access'
+            message: 'Incorrect Password!!'
          });
       });
    })
@@ -36,7 +36,7 @@ exports.loginUser = (req, res) => {
       res.status(500).json({
         code:500,
         status:"Error",
-         message: "Internal Server Error"
+         message: "Username or password is incorrect!!"
       });
    });;
 };
