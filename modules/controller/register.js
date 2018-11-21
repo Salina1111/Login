@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+
 
 exports.registerUser = (req, res) => {
   User.findOne({ username: req.body.username }).then(person => {

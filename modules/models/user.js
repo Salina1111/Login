@@ -11,9 +11,6 @@ let userSchema = new Schema({
   username: { type: String },
   password: String,
   Date: { type: Date, default: Date.now }
-  // updated_at:{type:Date,  default: Date.now},
-  // created_at: {type: Date,default: Date.now},
-  // is_deleted: { type: Boolean, default: false  }
 });
 
 //To use created schema -> convert schema into Model
