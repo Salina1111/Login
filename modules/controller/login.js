@@ -9,13 +9,13 @@ exports.loginUser = (req, res) => {
   //Use express Validator here
   User.findOne({ email: req.body.email }).then(data => {
     if (!data) {
-      return res.send("Error");
+      return res.status(400).send("UserName or Password is incorrect");
     } else {
       bcrypt.compare(req.body.password, data.password, (err, result) => {
         if (result == true) {
-          res.status('2xx').send("Hello welcome!!");
+          res.status(200).send("Welcome to our World!!");
         } else {
-            res.status(400).send(info);
+            res.status(400).send("Incorrect Password");
         }
       });
     }

@@ -35,7 +35,7 @@ exports.registerUser = async (req, res) => {
         res.status(201).json({ message: "Your data is posted" });
       })
       .catch(err => {
-        return console.error(err);
+        return res.status(417).json({ message: "Please fillup form properly.Thankyou!" });
       });
   });
 };
